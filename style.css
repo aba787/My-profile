@@ -365,5 +365,45 @@ body {
   .project-gallery {
     flex-direction: column;
 
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 40px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
 
-    
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.contact-form button {
+  background: #4A90E2;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #357ABD;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 20px;
+  }
+}
+  
+  
