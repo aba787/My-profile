@@ -208,9 +208,22 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #1c1c2c;
 }
-.contact-form .form-title { font-size: 32px; margin-bottom: 10px; color: #7d3fbf; font-weight: 600; }
-.contact-form .form-sub { font-size: 16px; margin-bottom: 30px; color: #555; }
-.contact-form form { display: flex; flex-direction: column; gap: 20px; }
+.contact-form .form-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #7d3fbf;
+  font-weight: 600;
+}
+.contact-form .form-sub {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #555;
+}
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -219,7 +232,22 @@ body {
   border: 1px solid #ccc;
   font-size: 16px;
   background: #fff;
-  color: #1c1c
+  color: #1c1c2c;
+}
+.contact-form button {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #7d3fbf;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.contact-form button:hover {
+  background: #5e4b8b;
+}
+
 
   /* Footer */
 .site-footer {
