@@ -20,6 +20,7 @@ body.sidebar-open {
   overflow: hidden;
 }
 /* الهامبرغر */
+
 .menu-toggle {
   width: 35px;
   cursor: pointer;
@@ -30,6 +31,13 @@ body.sidebar-open {
   top: 20px;
   right: 20px;
   z-index: 1001;
+}
+
+body.sidebar-open {
+  overflow: hidden;
+}
+
+
 }
 .menu-toggle span {
   height: 4px;
@@ -51,6 +59,11 @@ body.sidebar-open {
   transition: 0.3s;
   z-index: 1000;
 }
+
+.sidebar.active {
+  right: 0;
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -78,6 +91,21 @@ body.sidebar-open {
   height: 100%;
   background: rgba(0,0,0,0.4);
   z-index: 999;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
+}
+
+#overlay.active {
+  display: block;
 }
 
 /* Sidebar مفتوح */
