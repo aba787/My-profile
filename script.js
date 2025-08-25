@@ -28,22 +28,46 @@ toTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// تمرير ناعم عند الضغط على الروابط
+// Sidebar والهامبرغر
+const toggleBtn = document.getElementById("menu-toggle");
+const sidebar = document.getElementById("sidebar");
+
+// إنشاء Overlay
+const overlay = document.createElement("div");
+overlay.id = "overlay";
+document.body.appendChild(overlay);
+
+// فتح وغلق الـsidebar
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+  toggleBtn.classList.toggle("active");
+  document.body.classList.toggle("sidebar-open");
+  overlay.classList.toggle("active");
+});
+
+// الضغط على Overlay يغلق الـsidebar
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  toggleBtn.classList.remove("active");
+  document.body.classList.remove("sidebar-open");
+  overlay.classList.remove("active");
+});
+
+// تمرير ناعم عند الضغط على الروابط الداخلية
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute("href"));
     if (target) target.scrollIntoView({ behavior: "smooth" });
+
+    // إغلاق الـsidebar إذا الرابط داخل القائمة
+    if (sidebar.classList.contains("active")) {
+      sidebar.classList.remove("active");
+      toggleBtn.classList.remove("active");
+      document.body.classList.remove("sidebar-open");
+      overlay.classList.remove("active");
+    }
   });
-});
-
-// Sidebar الهامبرغر
-const toggleBtn = document.getElementById("menu-toggle");
-const sidebar = document.getElementById("sidebar");
-
-toggleBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-  toggleBtn.classList.toggle("active");
 });
 
 // Contact Form مع AJAX
@@ -63,7 +87,6 @@ if (form) {
       return;
     }
 
-    // إرسال عبر FormSubmit
     const formData = new FormData(form);
     await fetch("https://formsubmit.co/hgfyxc@gmail.com", {
       method: "POST",
@@ -78,8 +101,3 @@ if (form) {
     }, 5000);
   });
 }
-toggleBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-  toggleBtn.classList.toggle("active");
-  document.body.classList.toggle("sidebar-open");
-});
