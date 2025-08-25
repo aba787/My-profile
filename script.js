@@ -78,3 +78,8 @@ if (form) {
     }, 5000);
   });
 }
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+  toggleBtn.classList.toggle("active");
+  document.body.classList.toggle("sidebar-open");
+});
