@@ -16,7 +16,9 @@ body {
   padding: 0;
   direction: rtl;
 }
-
+body.sidebar-open {
+  overflow: hidden;
+}
 /* الهامبرغر */
 .menu-toggle {
   width: 35px;
@@ -64,6 +66,18 @@ body {
 }
 .sidebar ul li a:hover {
   color: #c9a7ff;
+}
+
+/* Overlay عند فتح الـsidebar */
+#sidebar.active::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 250px; /* بداية الـsidebar */
+  width: calc(100% - 250px);
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
 }
 
 /* Sidebar مفتوح */
@@ -341,3 +355,25 @@ body {
   font-size: 15px;
 }
 
+@media (max-width: 768px) {
+  .hero-section,
+  .about,
+  .experience,
+  .services,
+  .detailed-services,
+  .why-me,
+  .portfolio,
+  .contact-form,
+  .site-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .right-side h1 {
+    font-size: 40px;
+  }
+
+  .right-side p {
+    font-size: 18px;
+  }
+}
