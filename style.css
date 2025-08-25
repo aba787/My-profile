@@ -17,24 +17,70 @@ body {
   direction: rtl;
 }
 
-/* Navbar */
-.navbar {
+/* الهامبرغر */
+.menu-toggle {
+  width: 35px;
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--main-color);
-  padding: 15px 30px;
-  position: sticky;
+  flex-direction: column;
+  gap: 6px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+.menu-toggle span {
+  height: 4px;
+  background: #7d3fbf;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
   top: 0;
+  right: -250px; /* مخفي عن الصفحة */
+  width: 250px;
+  height: 100%;
+  background: #5e4b8b;
+  color: #fff;
+  padding: 60px 20px;
+  transition: 0.3s;
   z-index: 1000;
 }
-.navbar .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 20px; }
-.navbar .logo img { width: 50px; border-radius: 50%; }
-.navbar .nav-links { display: flex; gap: 20px; list-style: none; }
-.navbar .nav-links li a { color: #fff; text-decoration: none; font-weight: 600; transition: 0.3s; }
-.navbar .nav-links li a:hover { color: var(--accent-color); }
-.menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-.menu-toggle span { width: 30px; height: 3px; background: #fff; border-radius: 2px; }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin-bottom: 20px;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.sidebar ul li a:hover {
+  color: #c9a7ff;
+}
+
+/* Sidebar مفتوح */
+.sidebar.active {
+  right: 0;
+}
+
+/* تأثير الهامبرغر عند الضغط */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
 
 /* Hero Section */
 .hero-section {
