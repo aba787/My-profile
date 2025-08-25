@@ -36,7 +36,13 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (target) target.scrollIntoView({ behavior: "smooth" });
   });
 });
+const toggleBtn = document.getElementById("menu-toggle");
+const sidebar = document.getElementById("sidebar");
 
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+  toggleBtn.classList.toggle("active");
+});
 // التحقق من نموذج التواصل قبل الإرسال
 const form = document.querySelector(".contact-form form");
 if (form) {
