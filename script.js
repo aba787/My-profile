@@ -36,6 +36,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (target) target.scrollIntoView({ behavior: "smooth" });
   });
 });
+
+// Sidebar الهامبرغر
 const toggleBtn = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
 
@@ -43,19 +45,36 @@ toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("active");
   toggleBtn.classList.toggle("active");
 });
-// التحقق من نموذج التواصل قبل الإرسال
-const form = document.querySelector(".contact-form form");
+
+// Contact Form مع AJAX
+const form = document.getElementById("contactForm");
+const successMsg = document.getElementById("contact-success");
+
 if (form) {
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
     const name = form.querySelector('input[name="name"]');
     const email = form.querySelector('input[name="email"]');
     const msg = form.querySelector('textarea[name="message"]');
 
     if (!name.value.trim() || !email.value.trim() || !msg.value.trim()) {
-      e.preventDefault();
       alert("رجاءً تأكد من تعبئة جميع الحقول.");
-    } else {
-      alert("✅ تم إرسال النموذج بنجاح.");
+      return;
     }
+
+    // إرسال عبر FormSubmit
+    const formData = new FormData(form);
+    await fetch("https://formsubmit.co/hgfyxc@gmail.com", {
+      method: "POST",
+      body: formData
+    });
+
+    form.reset();
+    successMsg.style.display = "block";
+
+    setTimeout(() => {
+      successMsg.style.display = "none";
+    }, 5000);
   });
 }
