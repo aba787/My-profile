@@ -16,21 +16,14 @@ body {
   padding: 0;
   direction: rtl;
 }
-body.sidebar-open {
-  overflow: hidden;
-}
+
 /* الهامبرغر */
 
 .menu-toggle {
-  width: 35px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   position: fixed;
   top: 20px;
-  right: 20px;
-  z-index: 1001;
+  right: 20px; /* فوق يمين الشاشة */
+  z-index: 1100; /* أعلى من sidebar */
 }
 
 body.sidebar-open {
@@ -50,18 +43,19 @@ body.sidebar-open {
 .sidebar {
   position: fixed;
   top: 0;
-  right: -250px; /* مخفي عن الصفحة */
+  right: -250px; /* مخفي عن الصفحة بالكامل */
   width: 250px;
   height: 100%;
   background: #5e4b8b;
   color: #fff;
   padding: 60px 20px;
-  transition: 0.3s;
+  transition: right 0.3s ease; /* نتحكم بالتحريك */
   z-index: 1000;
 }
 
+/* عند الضغط على الهامبرغر */
 .sidebar.active {
-  right: 0;
+  right: 0; /* يظهر من اليمين */
 }
 
 .sidebar ul {
