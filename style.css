@@ -309,12 +309,19 @@ body.sidebar-open {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 15px;
+  padding: 12px; /* أقل شوية من 15px */
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 16px;
   background: #fff;
   color: #1c1c2c;
+  box-sizing: border-box; /* مهم لتجنب تمدد غير مرغوب */
+}
+
+.contact-form textarea {
+  min-height: 100px; /* خانات الرسائل تكون مناسبة */
+  max-height: 200px; /* تمنع طول كبير جدًا */
+  resize: vertical; /* يمكن للمستخدم تكبير/تصغير */
 }
 .contact-form button {
   padding: 15px;
