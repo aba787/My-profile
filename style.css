@@ -1,13 +1,13 @@
 
 :root {
-  --main-color: #5e4b8b;
-  --accent-color: #9583b3;
-  --background-color: #c7c3cc;
-  --text-color: #2c2c2c;
-  --highlight-color: #b8a4e0;
-  --footer-color: #4b3b69;
-  --gradient-box: linear-gradient(135deg, #e5defa, #c6b4e0);
-  --shadow: 0 8px 25px rgba(0,0,0,0.1);
+  --main-color: #6b5b95;
+  --accent-color: #8b7ca6;
+  --background-color: #c0c0c0;
+  --text-color: #2a2a2a;
+  --highlight-color: #9d88c4;
+  --footer-color: #4a4a4a;
+  --gradient-box: linear-gradient(135deg, #d8d8d8, #c0c0c0);
+  --shadow: 0 8px 25px rgba(0,0,0,0.15);
   --transition: all 0.3s ease;
 }
 
@@ -152,7 +152,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--background-color), #d8d0e3);
+  background: linear-gradient(135deg, #c8c8c8, #b8b8b8);
   position: relative;
   padding: 0 20px;
 }
@@ -250,25 +250,25 @@ section h2::after {
 
 /* Enhanced section backgrounds */
 .experience {
-  background: linear-gradient(135deg, #fafafa, #f0f8ff);
+  background: linear-gradient(135deg, #e8e8e8, #d5d5d5);
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(94, 75, 139, 0.08);
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(107, 91, 149, 0.15);
 }
 
 .services {
-  background: linear-gradient(135deg, #f8fff8, #fff0f8);
+  background: linear-gradient(135deg, #e5e5e5, #d2d2d2);
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(94, 75, 139, 0.08);
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(107, 91, 149, 0.15);
 }
 
 /* About */
@@ -317,20 +317,21 @@ section h2::after {
 
 .experience-item,
 .service-item {
-  background: linear-gradient(145deg, #ffffff, #f5f2ff);
+  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
   padding: 35px 25px;
   border-radius: 25px;
   font-size: 1.15rem;
   font-weight: 600;
   box-shadow: 
-    0 8px 32px rgba(94, 75, 139, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(94, 75, 139, 0.12);
+    0 8px 32px rgba(107, 91, 149, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(107, 91, 149, 0.15);
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  color: var(--main-color);
 }
 
 .experience-item::before,
@@ -379,11 +380,11 @@ section h2::after {
 .service-item:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 
-    0 25px 50px rgba(94, 75, 139, 0.25),
-    0 10px 20px rgba(94, 75, 139, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border-color: rgba(94, 75, 139, 0.2);
-  background: linear-gradient(145deg, #ffffff, #f8f5ff);
+    0 25px 50px rgba(107, 91, 149, 0.28),
+    0 10px 20px rgba(107, 91, 149, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-color: rgba(107, 91, 149, 0.25);
+  background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
 }
 
 /* Add unique styling for experience items */
@@ -616,14 +617,14 @@ section h2::after {
 
 /* Contact */
 .contact-form {
-  background: linear-gradient(135deg, #f9f9ff, #f0f0ff);
+  background: linear-gradient(135deg, #e8e8e8, #d8d8d8);
   padding: 60px 30px;
   max-width: 600px;
   margin: 60px auto;
   border-radius: 25px;
   box-shadow: var(--shadow);
   text-align: center;
-  border: 2px solid rgba(94, 75, 139, 0.1);
+  border: 2px solid rgba(107, 91, 149, 0.15);
 }
 
 .form-title {
