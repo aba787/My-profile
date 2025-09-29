@@ -1,24 +1,24 @@
 
 :root {
-  --main-color: #7c3aed;
-  --accent-color: #a855f7;
-  --background-color: #f8fafc;
-  --text-color: #374151;
-  --highlight-color: #c084fc;
-  --footer-color: #4b5563;
+  --main-color: #6b46c1;
+  --accent-color: #8b5cf6;
+  --background-color: #f1f5f9;
+  --text-color: #475569;
+  --highlight-color: #a78bfa;
+  --footer-color: #64748b;
   --success-color: #10b981;
   --error-color: #ef4444;
   --warning-color: #f59e0b;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
   --purple-50: #faf5ff;
   --purple-100: #f3e8ff;
   --purple-200: #e9d5ff;
@@ -29,12 +29,12 @@
   --purple-700: #7c3aed;
   --purple-800: #6b21a8;
   --purple-900: #581c87;
-  --gradient-box: linear-gradient(135deg, var(--gray-50), var(--purple-50));
-  --gradient-primary: linear-gradient(135deg, var(--purple-600) 0%, var(--purple-700) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--purple-400) 0%, var(--purple-600) 100%);
+  --gradient-box: linear-gradient(135deg, var(--gray-100), var(--purple-50));
+  --gradient-primary: linear-gradient(135deg, var(--main-color) 0%, var(--purple-700) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--accent-color) 0%, var(--main-color) 100%);
   --gradient-accent: linear-gradient(135deg, var(--gray-400) 0%, var(--purple-300) 100%);
-  --shadow: 0 10px 40px rgba(124, 58, 237, 0.15);
-  --shadow-hover: 0 20px 60px rgba(124, 58, 237, 0.25);
+  --shadow: 0 10px 40px rgba(107, 70, 193, 0.15);
+  --shadow-hover: 0 20px 60px rgba(107, 70, 193, 0.25);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 16px;
   --border-radius-lg: 24px;
@@ -45,7 +45,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--gray-50) 0%, var(--purple-50) 50%, var(--gray-100) 100%);
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 30%, var(--purple-50) 70%, var(--gray-100) 100%);
   color: var(--text-color);
   font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -182,7 +182,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--purple-600) 0%, var(--gray-600) 50%, var(--purple-700) 100%);
+  background: linear-gradient(135deg, var(--gray-700) 0%, var(--gray-800) 30%, var(--main-color) 70%, var(--gray-700) 100%);
   position: relative;
   padding: 0 20px;
   overflow: hidden;
@@ -435,25 +435,25 @@ section h2::after {
 
 /* Enhanced section backgrounds */
 .experience {
-  background: linear-gradient(135deg, var(--gray-100), var(--purple-100));
+  background: linear-gradient(135deg, var(--gray-200), var(--gray-100));
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(124, 58, 237, 0.12),
+    0 20px 60px rgba(107, 70, 193, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.15);
 }
 
 .services {
-  background: linear-gradient(135deg, var(--purple-100), var(--gray-100));
+  background: linear-gradient(135deg, var(--gray-100), var(--purple-50));
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(124, 58, 237, 0.12),
+    0 20px 60px rgba(107, 70, 193, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.15);
 }
 
 /* About */
@@ -1875,7 +1875,7 @@ section h2::after {
 
 /* Footer */
 .site-footer {
-  background: linear-gradient(135deg, var(--gray-800), var(--purple-900));
+  background: linear-gradient(135deg, var(--gray-800), var(--gray-900));
   color: #fff;
   padding: 60px 30px 30px;
   margin-top: 80px;
