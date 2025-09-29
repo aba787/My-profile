@@ -1,20 +1,40 @@
 
 :root {
-  --main-color: #667eea;
-  --accent-color: #764ba2;
+  --main-color: #7c3aed;
+  --accent-color: #a855f7;
   --background-color: #f8fafc;
-  --text-color: #1a202c;
-  --highlight-color: #9f7aea;
-  --footer-color: #2d3748;
-  --success-color: #48bb78;
-  --error-color: #f56565;
-  --warning-color: #ed8936;
-  --gradient-box: linear-gradient(135deg, #ffffff, #f7fafc);
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --shadow: 0 10px 40px rgba(102, 126, 234, 0.15);
-  --shadow-hover: 0 20px 60px rgba(102, 126, 234, 0.25);
+  --text-color: #374151;
+  --highlight-color: #c084fc;
+  --footer-color: #4b5563;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7c3aed;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  --gradient-box: linear-gradient(135deg, var(--gray-50), var(--purple-50));
+  --gradient-primary: linear-gradient(135deg, var(--purple-600) 0%, var(--purple-700) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--purple-400) 0%, var(--purple-600) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--gray-400) 0%, var(--purple-300) 100%);
+  --shadow: 0 10px 40px rgba(124, 58, 237, 0.15);
+  --shadow-hover: 0 20px 60px rgba(124, 58, 237, 0.25);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 16px;
   --border-radius-lg: 24px;
@@ -25,7 +45,7 @@
 }
 
 body {
-  background-color: var(--background-color);
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--purple-50) 50%, var(--gray-100) 100%);
   color: var(--text-color);
   font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -33,6 +53,7 @@ body {
   direction: rtl;
   line-height: 1.6;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* الهامبرغر */
@@ -59,7 +80,7 @@ body {
 .menu-toggle span {
   height: 3px;
   width: 25px;
-  background: var(--main-color);
+  background: var(--purple-600);
   border-radius: 2px;
   transition: var(--transition);
 }
@@ -71,7 +92,7 @@ body {
   right: -280px;
   width: 280px;
   height: 100vh;
-  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  background: linear-gradient(135deg, var(--purple-700), var(--gray-700));
   color: #fff;
   padding: 80px 30px 30px;
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -161,7 +182,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--purple-600) 0%, var(--gray-600) 50%, var(--purple-700) 100%);
   position: relative;
   padding: 0 20px;
   overflow: hidden;
@@ -175,9 +196,9 @@ body {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(107,91,149,0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(157,136,196,0.2) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(107,114,142,0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(168,85,247,0.15) 0%, transparent 50%);
   z-index: 1;
 }
 
@@ -414,25 +435,25 @@ section h2::after {
 
 /* Enhanced section backgrounds */
 .experience {
-  background: linear-gradient(135deg, #e8e8e8, #d5d5d5);
+  background: linear-gradient(135deg, var(--gray-100), var(--purple-100));
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 20px 60px rgba(124, 58, 237, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(107, 91, 149, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 .services {
-  background: linear-gradient(135deg, #e5e5e5, #d2d2d2);
+  background: linear-gradient(135deg, var(--purple-100), var(--gray-100));
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 20px 60px rgba(124, 58, 237, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(107, 91, 149, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 /* About */
@@ -579,14 +600,14 @@ section h2::after {
 
 /* Programming Languages Section */
 .programming-languages {
-  background: linear-gradient(135deg, #f5f0ff, #ede7ff);
+  background: linear-gradient(135deg, var(--purple-50), var(--gray-50));
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 20px 60px rgba(124, 58, 237, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(107, 91, 149, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 .languages-grid {
@@ -781,14 +802,14 @@ section h2::after {
 
 /* Enhanced Services Section */
 .enhanced-services {
-  background: linear-gradient(135deg, #f8f4ff, #ede7ff);
+  background: linear-gradient(135deg, var(--purple-50), var(--gray-100));
   border-radius: 40px;
   margin: 60px 20px;
   padding: 80px 40px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 20px 60px rgba(124, 58, 237, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(107, 91, 149, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 .services-container {
@@ -973,7 +994,7 @@ section h2::after {
 
 /* Why Me - Professional Showcase */
 .why-me-professional {
-  background: linear-gradient(135deg, #f8f4ff 0%, #ede7ff 50%, #e6d7ff 100%);
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--purple-50) 50%, var(--gray-100) 100%);
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -1854,7 +1875,7 @@ section h2::after {
 
 /* Footer */
 .site-footer {
-  background: linear-gradient(135deg, #2c2c2c, #3a3a3a);
+  background: linear-gradient(135deg, var(--gray-800), var(--purple-900));
   color: #fff;
   padding: 60px 30px 30px;
   margin-top: 80px;
