@@ -230,8 +230,45 @@ section h2 {
   font-size: clamp(2rem, 4vw, 2.5rem);
   color: var(--main-color);
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--main-color), var(--accent-color), var(--highlight-color));
+  border-radius: 2px;
+}
+
+/* Enhanced section backgrounds */
+.experience {
+  background: linear-gradient(135deg, #fafafa, #f0f8ff);
+  border-radius: 40px;
+  margin: 60px 20px;
+  padding: 80px 40px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(94, 75, 139, 0.08);
+}
+
+.services {
+  background: linear-gradient(135deg, #f8fff8, #fff0f8);
+  border-radius: 40px;
+  margin: 60px 20px;
+  padding: 80px 40px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(94, 75, 139, 0.08);
 }
 
 /* About */
@@ -272,25 +309,28 @@ section h2 {
 .experience-boxes,
 .service-boxes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  max-width: 1000px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .experience-item,
 .service-item {
-  background: var(--gradient-box);
-  padding: 25px;
-  border-radius: 20px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  box-shadow: var(--shadow);
-  border: 2px solid rgba(94, 75, 139, 0.1);
+  background: linear-gradient(145deg, #ffffff, #f5f2ff);
+  padding: 35px 25px;
+  border-radius: 25px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  box-shadow: 
+    0 8px 32px rgba(94, 75, 139, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(94, 75, 139, 0.12);
   text-align: center;
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .experience-item::before,
@@ -300,10 +340,28 @@ section h2 {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+  height: 5px;
+  background: linear-gradient(135deg, 
+    var(--main-color) 0%, 
+    var(--accent-color) 50%, 
+    var(--highlight-color) 100%);
   transform: translateX(-100%);
-  transition: var(--transition);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-item::after,
+.service-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(94, 75, 139, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+  z-index: 0;
 }
 
 .experience-item:hover::before,
@@ -311,10 +369,110 @@ section h2 {
   transform: translateX(0);
 }
 
+.experience-item:hover::after,
+.service-item:hover::after {
+  width: 400px;
+  height: 400px;
+}
+
 .experience-item:hover,
 .service-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(94, 75, 139, 0.25),
+    0 10px 20px rgba(94, 75, 139, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(94, 75, 139, 0.2);
+  background: linear-gradient(145deg, #ffffff, #f8f5ff);
+}
+
+/* Add unique styling for experience items */
+.experience-item {
+  background: linear-gradient(145deg, #fff9f9, #f0e7ff);
+}
+
+.experience-item:hover {
+  background: linear-gradient(145deg, #ffffff, #f5f0ff);
+}
+
+.experience-item::before {
+  background: linear-gradient(135deg, #ff6b6b, var(--main-color), var(--accent-color));
+}
+
+/* Add unique styling for service items */
+.service-item {
+  background: linear-gradient(145deg, #f9fff9, #e7f0ff);
+}
+
+.service-item:hover {
+  background: linear-gradient(145deg, #ffffff, #f0f5ff);
+}
+
+.service-item::before {
+  background: linear-gradient(135deg, #4ecdc4, var(--accent-color), var(--highlight-color));
+}
+
+/* Add staggered animation delay */
+.experience-item:nth-child(odd) {
+  animation: slideInLeft 0.8s ease forwards;
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.experience-item:nth-child(even) {
+  animation: slideInRight 0.8s ease forwards;
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.service-item:nth-child(odd) {
+  animation: slideInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.service-item:nth-child(even) {
+  animation: slideInDown 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+/* Stagger the animations */
+.experience-item:nth-child(1), .service-item:nth-child(1) { animation-delay: 0.1s; }
+.experience-item:nth-child(2), .service-item:nth-child(2) { animation-delay: 0.2s; }
+.experience-item:nth-child(3), .service-item:nth-child(3) { animation-delay: 0.3s; }
+.experience-item:nth-child(4), .service-item:nth-child(4) { animation-delay: 0.4s; }
+.experience-item:nth-child(5), .service-item:nth-child(5) { animation-delay: 0.5s; }
+.experience-item:nth-child(6), .service-item:nth-child(6) { animation-delay: 0.6s; }
+.experience-item:nth-child(7), .service-item:nth-child(7) { animation-delay: 0.7s; }
+.experience-item:nth-child(8), .service-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Service Boxes */
@@ -604,7 +762,20 @@ section h2 {
   .experience-boxes,
   .service-boxes {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
+  }
+  
+  .experience-item,
+  .service-item {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  .experience,
+  .services {
+    margin: 40px 15px;
+    padding: 60px 25px;
+    border-radius: 30px;
   }
   
   .about,
@@ -631,7 +802,11 @@ section h2 {
   
   section h2 {
     font-size: 2rem;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+  }
+  
+  section h2::after {
+    width: 60px;
   }
 }
 
@@ -644,6 +819,26 @@ section h2 {
     font-size: 1.1rem;
   }
   
+  .experience-boxes,
+  .service-boxes {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .experience-item,
+  .service-item {
+    padding: 25px 15px;
+    font-size: 1.1rem;
+    border-radius: 18px;
+  }
+  
+  .experience,
+  .services {
+    margin: 30px 10px;
+    padding: 50px 20px;
+    border-radius: 25px;
+  }
+  
   .about,
   .why-me,
   .contact-form,
@@ -654,6 +849,11 @@ section h2 {
   .project-gallery {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
+  }
+  
+  section h2::after {
+    width: 50px;
+    height: 3px;
   }
 }
 
