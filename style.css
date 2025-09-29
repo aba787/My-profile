@@ -152,9 +152,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #c8c8c8, #b8b8b8);
+  background: linear-gradient(135deg, #6b5b95 0%, #8b7ca6 25%, #c0c0c0 75%, #d8d8d8 100%);
   position: relative;
   padding: 0 20px;
+  overflow: hidden;
 }
 
 .hero-section::before {
@@ -164,60 +165,214 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  opacity: 0.3;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(107,91,149,0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(157,136,196,0.2) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.03) 2px,
+      rgba(255,255,255,0.03) 4px
+    );
+  animation: subtleMove 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes subtleMove {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-20px, -20px) rotate(360deg); }
 }
 
 .hero-content {
   text-align: center;
-  max-width: 800px;
+  max-width: 900px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 60px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .hero-content h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  color: var(--main-color);
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-  animation: fadeInUp 1s ease;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+  animation: heroTitleAnimation 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+  letter-spacing: -1px;
+  line-height: 1.1;
 }
 
 .hero-content p {
+  font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  line-height: 1.6;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+  animation: heroParagraphAnimation 1s ease 0.3s both;
+}
+
+.hero-content p:nth-of-type(2) {
+  animation-delay: 0.5s;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+}
+
+.hero-content p:nth-of-type(3) {
+  animation-delay: 0.7s;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  margin-bottom: 30px;
-  color: var(--text-color);
-  animation: fadeInUp 1s ease 0.3s both;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-cta {
   display: inline-block;
-  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
-  color: white;
-  padding: 15px 35px;
-  border-radius: 50px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+  color: var(--main-color);
+  padding: 20px 45px;
+  border-radius: 60px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  animation: fadeInUp 1s ease 0.6s both;
+  font-weight: 700;
+  font-size: 1.3rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.8);
+  animation: heroCTAAnimation 1s ease 0.9s both;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.hero-cta:hover::before {
+  left: 100%;
 }
 
 .hero-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(94, 75, 139, 0.3);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 10px 20px rgba(107, 91, 149, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
 }
 
-@keyframes fadeInUp {
+.hero-cta:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Floating elements for decoration */
+.hero-section .floating-element {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-section .floating-element:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
+  animation-delay: -2s;
+}
+
+.hero-section .floating-element:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  top: 70%;
+  right: 15%;
+  animation-delay: -4s;
+}
+
+.hero-section .floating-element:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  top: 15%;
+  right: 20%;
+  animation-delay: -1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes heroTitleAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes heroParagraphAnimation {
   from {
     opacity: 0;
     transform: translateY(30px);
+    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes heroCTAAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
