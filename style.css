@@ -2388,6 +2388,17 @@ html {
   font-weight: 700;
 }
 
+/* Dark text styling for specific phrases */
+.dark-text {
+  color: #1a1a1a !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 /* Focus styles for accessibility */
 *:focus {
   outline: 2px solid var(--main-color);
