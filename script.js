@@ -222,13 +222,9 @@ const initializeContactForm = () => {
   // Show message
   const showMessage = (message, isError = false) => {
     if (successMsg) {
-      successMsg.textContent = message;
-      successMsg.style.display = "block";
-      successMsg.style.color = isError ? "red" : "green";
-      successMsg.style.backgroundColor = isError ? "#ffebee" : "#e8f5e8";
-      successMsg.style.padding = "15px";
-      successMsg.style.borderRadius = "10px";
-      successMsg.style.border = `2px solid ${isError ? "#f44336" : "#4caf50"}`;
+      successMsg.innerHTML = `<span>${message}</span>`;
+      successMsg.style.display = "flex";
+      successMsg.className = isError ? 'error' : 'success';
       
       // Auto-hide after 5 seconds
       setTimeout(() => {
@@ -264,13 +260,13 @@ const initializeContactForm = () => {
       
       if (response.ok) {
         form.reset();
-        showMessage("✅ تم إرسال رسالتك بنجاح! شكرًا لتواصلك معي، سأرد عليك قريباً.");
+        showMessage("🎉 تم إرسال رسالتك بنجاح! سأتواصل معك قريباً");
       } else {
         throw new Error('فشل في الإرسال');
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      showMessage("❌ حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى أو التواصل معي مباشرة.", true);
+      showMessage("⚠️ حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى", true);
     } finally {
       setLoadingState(false);
     }

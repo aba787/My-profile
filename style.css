@@ -1,14 +1,23 @@
 
 :root {
-  --main-color: #6b5b95;
-  --accent-color: #8b7ca6;
-  --background-color: #c0c0c0;
-  --text-color: #2a2a2a;
-  --highlight-color: #9d88c4;
-  --footer-color: #4a4a4a;
-  --gradient-box: linear-gradient(135deg, #d8d8d8, #c0c0c0);
-  --shadow: 0 8px 25px rgba(0,0,0,0.15);
-  --transition: all 0.3s ease;
+  --main-color: #667eea;
+  --accent-color: #764ba2;
+  --background-color: #f8fafc;
+  --text-color: #1a202c;
+  --highlight-color: #9f7aea;
+  --footer-color: #2d3748;
+  --success-color: #48bb78;
+  --error-color: #f56565;
+  --warning-color: #ed8936;
+  --gradient-box: linear-gradient(135deg, #ffffff, #f7fafc);
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --shadow: 0 10px 40px rgba(102, 126, 234, 0.15);
+  --shadow-hover: 0 20px 60px rgba(102, 126, 234, 0.25);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 16px;
+  --border-radius-lg: 24px;
 }
 
 * {
@@ -152,7 +161,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #6b5b95 0%, #8b7ca6 25%, #c0c0c0 75%, #d8d8d8 100%);
+  background: var(--gradient-primary);
   position: relative;
   padding: 0 20px;
   overflow: hidden;
@@ -201,14 +210,14 @@ body {
   max-width: 900px;
   position: relative;
   z-index: 2;
-  backdrop-filter: blur(5px);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius-lg);
   padding: 60px 40px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .hero-content h1 {
@@ -1716,14 +1725,27 @@ section h2::after {
 
 /* Contact */
 .contact-form {
-  background: linear-gradient(135deg, #e8e8e8, #d8d8d8);
+  background: var(--gradient-box);
   padding: 60px 30px;
   max-width: 600px;
   margin: 60px auto;
-  border-radius: 25px;
+  border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow);
   text-align: center;
-  border: 2px solid rgba(107, 91, 149, 0.15);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
 }
 
 .form-title {
@@ -1748,21 +1770,32 @@ section h2::after {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 15px 20px;
-  border-radius: 15px;
-  border: 2px solid rgba(94, 75, 139, 0.2);
-  font-size: 1rem;
+  padding: 18px 20px;
+  border-radius: var(--border-radius);
+  border: 2px solid rgba(102, 126, 234, 0.15);
+  font-size: 1.05rem;
   font-family: inherit;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   color: var(--text-color);
   transition: var(--transition);
+  backdrop-filter: blur(10px);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--main-color);
-  box-shadow: 0 0 0 3px rgba(94, 75, 139, 0.1);
+  box-shadow: 
+    0 0 0 4px rgba(102, 126, 234, 0.1),
+    0 8px 25px rgba(102, 126, 234, 0.15);
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(26, 32, 44, 0.6);
+  font-weight: 500;
 }
 
 .contact-form textarea {
@@ -1772,10 +1805,10 @@ section h2::after {
 }
 
 .contact-form button {
-  padding: 18px 30px;
+  padding: 18px 40px;
   border: none;
-  border-radius: 15px;
-  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  border-radius: var(--border-radius);
+  background: var(--gradient-primary);
   color: #fff;
   font-size: 1.1rem;
   font-weight: 600;
@@ -1783,15 +1816,40 @@ section h2::after {
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.contact-form button:hover::before {
+  left: 100%;
 }
 
 .contact-form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(94, 75, 139, 0.3);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
 .contact-form button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
+}
+
+.contact-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
 /* Footer */
@@ -2324,4 +2382,79 @@ html {
 
 .loading {
   animation: pulse 2s infinite;
+}
+
+/* Modern Success/Error Messages */
+#contact-success {
+  border-radius: var(--border-radius);
+  padding: 20px 25px;
+  margin-top: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideInUp 0.5s ease, fadeOut 0.5s ease 4.5s forwards;
+}
+
+#contact-success.success {
+  background: linear-gradient(135deg, rgba(72, 187, 120, 0.1), rgba(72, 187, 120, 0.05));
+  color: var(--success-color);
+  border-color: rgba(72, 187, 120, 0.3);
+}
+
+#contact-success.error {
+  background: linear-gradient(135deg, rgba(245, 101, 101, 0.1), rgba(245, 101, 101, 0.05));
+  color: var(--error-color);
+  border-color: rgba(245, 101, 101, 0.3);
+}
+
+#contact-success::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#contact-success.success::before {
+  background: var(--success-color);
+  animation: checkmark 0.5s ease 0.2s both;
+}
+
+#contact-success.error::before {
+  background: var(--error-color);
+  animation: errormark 0.5s ease 0.2s both;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes checkmark {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes errormark {
+  0% { transform: scale(0) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
 }
