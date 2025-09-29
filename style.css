@@ -1,10 +1,10 @@
 :root {
-  --main-color: #6b46c1;
-  --accent-color: #8b5cf6;
-  --background-color: #f1f5f9;
-  --text-color: #475569;
-  --highlight-color: #a78bfa;
-  --footer-color: #64748b;
+  --main-color: #766E99;
+  --accent-color: #766E99;
+  --background-color: #9B9B9B;
+  --text-color: #2A2A2A;
+  --highlight-color: #766E99;
+  --footer-color: #2A2A2A;
   --success-color: #10b981;
   --error-color: #ef4444;
   --warning-color: #f59e0b;
@@ -2497,7 +2497,7 @@ html {
   transition: all 0.3s ease;
   border: none;
   box-shadow: 0 10px 25px rgba(107, 91, 149, 0.3);
-  background-color: var(--main-color);
+  background-color: #766E99;
 }
 
 .to-top.active {
@@ -2506,7 +2506,7 @@ html {
 }
 
 .to-top:hover {
-  background-color: var(--purple-700);
+  background-color: #6b6491;
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(107, 91, 149, 0.4);
 }
