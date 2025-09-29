@@ -1018,6 +1018,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Purple text styling */
+.purple-text {
+  color: var(--main-color) !important;
+  background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 50%, var(--highlight-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
 /* Focus styles for accessibility */
 *:focus {
   outline: 2px solid var(--main-color);
