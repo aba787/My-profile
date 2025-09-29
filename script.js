@@ -250,7 +250,7 @@ const initializeContactForm = () => {
     setLoadingState(true);
     
     try {
-      const response = await fetch("https://formsubmit.co/hgfyxc@gmail.com", {
+      const response = await fetch("https://formsubmit.co/your-email@example.com", {
         method: "POST",
         body: formData,
         headers: {
@@ -522,15 +522,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Service Worker registration (optional)
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('SW registered: ', registration);
-      })
-      .catch(registrationError => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
-}
+// Service Worker registration removed to prevent console errors
+// Add back when you have a service worker file

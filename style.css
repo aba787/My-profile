@@ -2299,6 +2299,10 @@ section h2::after {
     margin: 0 auto;
   }
 
+  .portfolio {
+    padding: 60px 15px;
+  }
+
   /* Project Modal - Mobile */
   .project-modal {
     padding: 10px;
