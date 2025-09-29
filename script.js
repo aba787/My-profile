@@ -522,5 +522,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Service Worker registration removed to prevent console errors
-// Add back when you have a service worker file
+// Service worker functionality removed - no longer attempting registration
