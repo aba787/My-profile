@@ -1339,7 +1339,7 @@ section h2::after {
 .portfolio {
   padding: 80px 20px;
   text-align: center;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -1352,23 +1352,366 @@ section h2::after {
 
 .project-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.project-gallery img {
+.project-card {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(107, 91, 149, 0.15);
+  border: 2px solid rgba(107, 91, 149, 0.1);
+  background: linear-gradient(145deg, #ffffff, #f8f8ff);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(107, 91, 149, 0.1), rgba(157, 136, 196, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(107, 91, 149, 0.25),
+    0 10px 20px rgba(107, 91, 149, 0.15);
+  border-color: rgba(107, 91, 149, 0.25);
+}
+
+.project-card img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  border: 3px solid rgba(94, 75, 139, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 0;
 }
 
-.project-gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+.project-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(0.8);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(107, 91, 149, 0.85), rgba(157, 136, 196, 0.85));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.1s;
+}
+
+.project-card:hover .project-overlay h3 {
+  transform: translateY(0);
+}
+
+.project-overlay p {
+  font-size: 1.1rem;
+  margin: 0 0 15px 0;
+  opacity: 0.9;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.15s;
+}
+
+.project-card:hover .project-overlay p {
+  transform: translateY(0);
+}
+
+.view-icon {
+  font-size: 2.5rem;
+  animation: pulse 2s ease-in-out infinite;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.2s;
+}
+
+.project-card:hover .view-icon {
+  transform: translateY(0);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Project Modal */
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px;
+}
+
+.project-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #ffffff, #fafafa);
+  border-radius: 25px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(107, 91, 149, 0.1);
+  transform: scale(0.8) translateY(50px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-modal.active .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(107, 91, 149, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--main-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--main-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.modal-header {
+  display: flex;
+  gap: 25px;
+  padding: 30px;
+  border-bottom: 2px solid rgba(107, 91, 149, 0.1);
+  align-items: center;
+}
+
+.modal-header img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(107, 91, 149, 0.2);
+  border: 3px solid rgba(107, 91, 149, 0.1);
+}
+
+.modal-title h2 {
+  font-size: 2rem;
+  color: var(--main-color);
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.modal-title p {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 30px;
+}
+
+.modal-body h3 {
+  font-size: 1.4rem;
+  color: var(--main-color);
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-body h3::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+.project-description {
+  margin-bottom: 30px;
+}
+
+.project-description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.project-tools {
+  margin-bottom: 30px;
+}
+
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tool-tag {
+  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(107, 91, 149, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tool-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(107, 91, 149, 0.4);
+}
+
+.project-features {
+  margin-bottom: 30px;
+}
+
+.project-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: var(--text-color);
+  border-bottom: 1px solid rgba(107, 91, 149, 0.1);
+}
+
+.project-features li:last-child {
+  border-bottom: none;
+}
+
+.project-features li::before {
+  content: '✅';
+  font-size: 1.2rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(107, 91, 149, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.project-link:hover::before {
+  left: 100%;
+}
+
+.project-link:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(107, 91, 149, 0.4);
+}
+
+.project-link.secondary {
+  background: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+}
+
+.project-link.secondary:hover {
+  background: var(--main-color);
+  color: white;
 }
 
 /* Contact */
@@ -1869,8 +2212,81 @@ section h2::after {
   }
   
   .project-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .project-card {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  /* Project Modal - Mobile */
+  .project-modal {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    border-radius: 20px;
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    flex-direction: column;
     gap: 15px;
+    padding: 25px 20px;
+    text-align: center;
+  }
+  
+  .modal-header img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .modal-title h2 {
+    font-size: 1.6rem;
+  }
+  
+  .modal-title p {
+    font-size: 1rem;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-body h3 {
+    font-size: 1.2rem;
+  }
+  
+  .project-description p {
+    font-size: 1rem;
+  }
+  
+  .tools-grid {
+    gap: 8px;
+  }
+  
+  .tool-tag {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .project-features li {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+  
+  .project-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .project-link {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
   }
   
   section h2::after {

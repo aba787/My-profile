@@ -510,12 +510,76 @@
     <h2>أعمالي</h2>
     <p>عدد الأعمال: ٤</p>
     <div class="project-gallery">
-      <img src="https://i.postimg.cc/zXKpxFyG/IMG-2383.jpg" alt="مشروع 1">
-      <img src="https://i.postimg.cc/VvcmnFSb/Black-White-Minimalist-Professional-Initial-Logo.png" alt="مشروع 2">
-      <img src="https://i.postimg.cc/Yq6f62P4/IMG-2382.jpg" alt="مشروع 3">
-      <img src="https://i.postimg.cc/g0Tvzxx7/alkhaymat-altiqnia.png" alt="مشروع 4">
+      <div class="project-card" data-project="1">
+        <img src="https://i.postimg.cc/zXKpxFyG/IMG-2383.jpg" alt="مشروع 1">
+        <div class="project-overlay">
+          <h3>مشروع 1</h3>
+          <p>انقر للمزيد</p>
+          <span class="view-icon">👁️</span>
+        </div>
+      </div>
+      <div class="project-card" data-project="2">
+        <img src="https://i.postimg.cc/VvcmnFSb/Black-White-Minimalist-Professional-Initial-Logo.png" alt="مشروع 2">
+        <div class="project-overlay">
+          <h3>مشروع 2</h3>
+          <p>انقر للمزيد</p>
+          <span class="view-icon">👁️</span>
+        </div>
+      </div>
+      <div class="project-card" data-project="3">
+        <img src="https://i.postimg.cc/Yq6f62P4/IMG-2382.jpg" alt="مشروع 3">
+        <div class="project-overlay">
+          <h3>مشروع 3</h3>
+          <p>انقر للمزيد</p>
+          <span class="view-icon">👁️</span>
+        </div>
+      </div>
+      <div class="project-card" data-project="4">
+        <img src="https://i.postimg.cc/g0Tvzxx7/alkhaymat-altiqnia.png" alt="مشروع 4">
+        <div class="project-overlay">
+          <h3>مشروع 4</h3>
+          <p>انقر للمزيد</p>
+          <span class="view-icon">👁️</span>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Project Modal -->
+  <div class="project-modal" id="projectModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-header">
+        <img id="modalImage" src="" alt="">
+        <div class="modal-title">
+          <h2 id="modalTitle"></h2>
+          <p id="modalCategory"></p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="project-description">
+          <h3>وصف المشروع</h3>
+          <p id="modalDescription"></p>
+        </div>
+        <div class="project-tools">
+          <h3>الأدوات المستخدمة</h3>
+          <div class="tools-grid" id="modalTools"></div>
+        </div>
+        <div class="project-features">
+          <h3>المميزات</h3>
+          <ul id="modalFeatures"></ul>
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link" id="modalLiveLink" target="_blank">
+            <span>🌐</span> عرض المشروع
+          </a>
+          <a href="#" class="project-link secondary" id="modalCodeLink" target="_blank">
+            <span>💻</span> عرض الكود
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Contact -->
 

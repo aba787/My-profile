@@ -356,6 +356,159 @@ window.addEventListener('error', (e) => {
   console.error('JavaScript error:', e.error);
 });
 
+// Project Modal Functionality
+const initializeProjectModal = () => {
+  const projectCards = document.querySelectorAll('.project-card');
+  const modal = document.getElementById('projectModal');
+  const modalClose = document.getElementById('modalClose');
+  
+  if (!modal) {
+    console.warn('Project modal not found');
+    return;
+  }
+
+  // Project data
+  const projectData = {
+    1: {
+      title: "موقع شركة تقنية",
+      category: "تطوير مواقع الشركات",
+      description: "موقع احترافي لشركة تقنية متخصصة في الحلول الرقمية. يتضمن عرض الخدمات، معرض الأعمال، ونظام إدارة المحتوى.",
+      tools: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "Bootstrap"],
+      features: [
+        "تصميم متجاوب مع جميع الأجهزة",
+        "نظام إدارة المحتوى",
+        "تحسين محركات البحث SEO",
+        "أمان عالي وحماية من الاختراق",
+        "سرعة تحميل فائقة",
+        "لوحة تحكم إدارية"
+      ],
+      image: "https://i.postimg.cc/zXKpxFyG/IMG-2383.jpg",
+      liveLink: "#",
+      codeLink: "#"
+    },
+    2: {
+      title: "هوية بصرية متكاملة",
+      category: "تصميم العلامات التجارية",
+      description: "تصميم هوية بصرية شاملة تتضمن الشعار، الألوان، الخطوط، والمواد التسويقية لشركة ناشئة في مجال التقنية.",
+      tools: ["Adobe Illustrator", "Photoshop", "Figma", "Brand Guidelines"],
+      features: [
+        "شعار احترافي بعدة إصدارات",
+        "دليل الهوية البصرية الكامل",
+        "تصميم البطاقات التجارية",
+        "قوالب وسائل التواصل الاجتماعي",
+        "مواد تسويقية متنوعة",
+        "ملفات قابلة للطباعة بجودة عالية"
+      ],
+      image: "https://i.postimg.cc/VvcmnFSb/Black-White-Minimalist-Professional-Initial-Logo.png",
+      liveLink: "#",
+      codeLink: "#"
+    },
+    3: {
+      title: "تطبيق إدارة المشاريع",
+      category: "تطبيقات الويب",
+      description: "تطبيق ويب متقدم لإدارة المشاريع والمهام مع إمكانيات التعاون الجماعي ومتابعة التقدم في الوقت الفعلي.",
+      tools: ["React", "Node.js", "MongoDB", "Socket.io", "Material-UI"],
+      features: [
+        "إدارة المشاريع والمهام",
+        "تعاون فريق في الوقت الفعلي",
+        "نظام إشعارات متقدم",
+        "تقارير وإحصائيات تفصيلية",
+        "واجهة مستخدم سهلة وبديهية",
+        "نظام أذونات متعدد المستويات"
+      ],
+      image: "https://i.postimg.cc/Yq6f62P4/IMG-2382.jpg",
+      liveLink: "#",
+      codeLink: "#"
+    },
+    4: {
+      title: "منصة الخيمات التقنية",
+      category: "التجارة الإلكترونية",
+      description: "منصة تجارة إلكترونية متكاملة لبيع المنتجات التقنية مع نظام دفع آمن وإدارة المخزون وخدمة العملاء.",
+      tools: ["WordPress", "WooCommerce", "PHP", "MySQL", "Payment Gateway"],
+      features: [
+        "متجر إلكتروني متكامل",
+        "نظام دفع آمن ومتعدد الوسائل",
+        "إدارة المخزون الذكية",
+        "نظام تتبع الطلبات",
+        "خدمة عملاء مدمجة",
+        "تحليلات مبيعات مفصلة"
+      ],
+      image: "https://i.postimg.cc/g0Tvzxx7/alkhaymat-altiqnia.png",
+      liveLink: "#",
+      codeLink: "#"
+    }
+  };
+
+  // Open modal function
+  const openModal = (projectId) => {
+    const project = projectData[projectId];
+    if (!project) return;
+
+    // Populate modal content
+    document.getElementById('modalImage').src = project.image;
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalCategory').textContent = project.category;
+    document.getElementById('modalDescription').textContent = project.description;
+    
+    // Populate tools
+    const toolsContainer = document.getElementById('modalTools');
+    toolsContainer.innerHTML = '';
+    project.tools.forEach(tool => {
+      const toolTag = document.createElement('span');
+      toolTag.className = 'tool-tag';
+      toolTag.textContent = tool;
+      toolsContainer.appendChild(toolTag);
+    });
+
+    // Populate features
+    const featuresContainer = document.getElementById('modalFeatures');
+    featuresContainer.innerHTML = '';
+    project.features.forEach(feature => {
+      const li = document.createElement('li');
+      li.textContent = feature;
+      featuresContainer.appendChild(li);
+    });
+
+    // Set links
+    document.getElementById('modalLiveLink').href = project.liveLink;
+    document.getElementById('modalCodeLink').href = project.codeLink;
+
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Close modal function
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // Event listeners
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const projectId = card.dataset.project;
+      openModal(projectId);
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+};
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   try {
@@ -365,6 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeContactForm();
     initializeAnimations();
     initializePerformanceOptimizations();
+    initializeProjectModal();
     
     console.log('✅ Website initialized successfully');
   } catch (error) {
