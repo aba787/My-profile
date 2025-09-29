@@ -582,9 +582,9 @@ section h2::after {
 
 .languages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 30px;
-  max-width: 800px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -594,12 +594,12 @@ section h2::after {
   align-items: center;
   justify-content: center;
   background: linear-gradient(145deg, #ffffff, #f8f8ff);
-  padding: 30px 20px;
-  border-radius: 25px;
+  padding: 15px 10px;
+  border-radius: 15px;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
-    0 8px 32px rgba(107, 91, 149, 0.12),
+    0 4px 16px rgba(107, 91, 149, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(107, 91, 149, 0.1);
   position: relative;
@@ -656,22 +656,22 @@ section h2::after {
 }
 
 .language-item img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 15px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
   transition: all 0.4s ease;
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
 .language-item:hover img {
   transform: scale(1.1) rotate(5deg);
-  filter: drop-shadow(0 8px 16px rgba(107, 91, 149, 0.3));
+  filter: drop-shadow(0 4px 8px rgba(107, 91, 149, 0.3));
 }
 
 .language-item span {
-  font-size: 1.1rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--main-color);
   position: relative;
@@ -1061,17 +1061,17 @@ section h2::after {
   }
   
   .languages-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
   }
   
   .language-item {
-    padding: 25px 15px;
+    padding: 12px 8px;
   }
   
   .language-item img {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
   }
   
   .experience-item,
@@ -1136,22 +1136,22 @@ section h2::after {
   }
   
   .languages-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
   }
   
   .language-item {
-    padding: 20px 10px;
+    padding: 10px 6px;
   }
   
   .language-item img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 6px;
   }
   
   .language-item span {
-    font-size: 0.95rem;
+    font-size: 0.75rem;
   }
   
   .experience-item,
